@@ -1,0 +1,33 @@
+<header>
+  <div class="logo-container">
+    <a href="/inicio">
+      <img src="assets/img/logotipomoto.png" alt="Logo MotoVelazquez" class="logo">
+    </a>
+    <nav>
+      <a href="/inicio">Inicio</a>
+      <a href="/motos">Motos</a>
+      <a href="/accesorios">Accesorios</a>
+      <a href="/ropa">Ropa</a>
+      <a href="/contacto">Contacto</a>
+    </nav>
+    <div class="cart" (mouseenter)="showModal()" (mouseleave)="hideModal()">
+      <a href="#">
+        <img src="https://cdn-icons-png.flaticon.com/128/3550/3550640.png" alt="Carrito" class="cart-icon">
+      </a>
+      <span *ngIf="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span> <!-- Muestra el número de productos -->
+      <div class="modal" *ngIf="isModalVisible">
+        <img *ngIf="lastAddedProduct?.imagen" [src]="'data:image/jpeg;base64,' + lastAddedProduct.imagen" alt="{{ lastAddedProduct?.nombre }}" />
+        <p>{{ lastAddedProduct?.nombre }}</p>
+        <p>{{ lastAddedProduct?.precio }} €</p>
+        <button (click)="eliminarProducto()">Eliminar Producto</button> <!-- Botón para eliminar el producto -->
+      </div>
+    </div>
+  </div>
+</header>
+
+
+
+
+
+  
+  

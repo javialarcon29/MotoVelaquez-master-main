@@ -1,0 +1,157 @@
+/* Importar fuente externa de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+
+/* Fondo global con imagen */
+body {
+  background-image: url('assets/img/fondo.jpeg'); /* Aquí va la ruta de tu imagen */
+  background-size: cover; /* La imagen cubrirá toda la pantalla */
+  background-position: center center; /* Centrar la imagen */
+  background-attachment: fixed; /* La imagen permanece fija cuando se desplaza */
+  background-repeat: no-repeat; /* Evitar que la imagen se repita */
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif; /* Aplicar la fuente externa al cuerpo */
+}
+
+/* Estilos del header */
+header {
+  background-color: #000; /* Fondo negro */
+  padding: 10px 0; /* Eliminar el padding lateral para que el logo y el carrito estén más cerca del borde */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  font-family: 'Montserrat', sans-serif; /* Aplicar la fuente externa */
+}
+
+/* Contenedor principal del header */
+.logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Estilos del logotipo */
+.logo {
+  width: 80px;
+  height: auto;
+  border-radius: 15px;
+  transition: transform 0.3s;
+  margin-left: 0px; /* Mover el logotipo más hacia la izquierda */
+}
+
+/* Hover del logotipo */
+.logo:hover {
+  transform: scale(1.05);
+}
+
+/* Contenedor de la navegación */
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+}
+
+/* Estilos de los enlaces */
+nav a {
+  color: white;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s, opacity 0.3s;
+  border-radius: 5px;
+  font-weight: 600; /* Hacer el texto más grueso */
+  position: relative;
+  overflow: hidden; /* Para evitar que el subrayado animado se salga del contenedor */
+}
+
+/* Hover más elaborado para los enlaces */
+nav a:hover {
+  background: linear-gradient(90deg, white, #b7c725);
+  color: #000;
+  transform: translateY(-3px); /* Elevar el enlace al pasar el mouse */
+  opacity: 0.9;
+}
+
+/* Subrayado animado en hover */
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: red;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  transition: transform 0.3s ease-out;
+}
+
+nav a:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Estado activo */
+nav a:active {
+  background-color: #16a085;
+}
+
+/* Carrito de compras */
+.cart {
+  display: flex;
+  align-items: center;
+  margin-right: 2px; /* Mover el carrito más hacia la derecha */
+  position: relative; /* Asegúrate de que el contenedor sea relativo para el posicionamiento del modal */
+}
+
+.cart-icon {
+  width: 60px; /* Aumentar ligeramente el tamaño del icono del carrito */
+  height: auto;
+}
+.cart-count {
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 5px 10px;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 0.9rem;
+}
+.modal {
+  position: absolute; /* Mantener el modal en posición absoluta */
+  top: 60px; /* Ajusta este valor para mover el modal más abajo */
+  left: 50%; /* Centrar horizontalmente respecto al contenedor */
+  transform: translateX(-50%); /* Ajustar la posición para centrarlo */
+  background-color: #f1c40f; /* Color de fondo amarillo */
+  border: 1px solid #e67e22; /* Borde de color naranja */
+  border-radius: 8px;
+  padding: 15px; /* Aumentar el padding para más espacio */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Sombra más pronunciada */
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Añadir transición */
+  opacity: 0.9; /* Opacidad para un efecto más suave */
+}
+
+.modal img {
+  width: 120px; /* Ajusta el tamaño según sea necesario */
+  height: auto; /* Mantener la proporción de la imagen */
+  max-height: 100px; /* Limitar la altura máxima de la imagen */
+  margin-bottom: 15px; /* Espacio adicional debajo de la imagen */
+}
+
+/* Estilo para el texto dentro del modal */
+.modal p {
+  color: white; /* Color de texto blanco */
+  font-size: 1rem; /* Tamaño de fuente */
+  text-align: center; /* Centrar el texto */
+  margin: 5px 0; /* Espaciado entre párrafos */
+}

@@ -1,0 +1,76 @@
+<div class="catalog-container">
+  <!-- Sidebar de Filtros -->
+  <div class="catalog-sidebar">
+    <h3>Filtros</h3>
+
+    <!-- Filtro de Búsqueda por Nombre -->
+    <div class="filter-section">
+      <label for="search">Buscar por nombre:</label>
+      <input
+        type="text"
+        id="search"
+        [(ngModel)]="searchTerm"
+        placeholder="Buscar..."
+        (input)="applyFilters()"
+      />
+    </div>
+
+    <!-- Filtro de Marca -->
+    <div class="filter-section">
+      <h4>Marca</h4>
+      <div *ngFor="let marca of marcas">
+        <input
+          type="checkbox"
+          [value]="marca"
+          (change)="onMarcaChange(marca, $event)"
+        />
+        <label>{{ marca }}</label>
+      </div>
+    </div>
+
+    <!-- Filtro de Precio (Mayor a Menor) -->
+    <div class="filter-section">
+      <h4>Ordenar por Precio</h4>
+      <select [(ngModel)]="sortOrder" (change)="applyFilters()">
+        <option value="asc">Menor a Mayor</option>
+        <option value="desc">Mayor a Menor</option>
+      </select>
+    </div>
+
+    <!-- Filtro de Rango de Precios -->
+    <div class="filter-section">
+      <h4>Rango de precios</h4>
+      <label for="minPrice">Min:</label>
+      <input
+        type="number"
+        id="minPrice"
+        [(ngModel)]="minPrice"
+        (input)="applyFilters()"
+        placeholder="Precio mínimo"
+      />
+      <label for="maxPrice">Max:</label>
+      <input
+        type="number"
+        id="maxPrice"
+        [(ngModel)]="maxPrice"
+        (input)="applyFilters()"
+        placeholder="Precio máximo"
+      />
+    </div>
+  </div>
+
+  <!-- Catálogo de Productos -->
+  <div class="catalog-products">
+    <div *ngFor="let moto of filteredMotos" class="product-card">
+      <img [src]="'data:image/jpeg;base64,' + moto.imagen" alt="{{ moto.nombre }}" />
+      <div class="product-info">
+        <h4>{{ moto.nombre }}</h4>
+        <p class="marca">{{ moto.marca }}</p>
+        <p class="precio-producto">{{ moto.precio }} €</p>
+
+        {{ add_to_cart_button }}
+        <button class="add-to-cart" (click)="addToCart(moto)">Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+</div>

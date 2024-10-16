@@ -1,0 +1,195 @@
+/* Estilos globales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f7f7f7; /* Fondo blanco suave */
+  color: #333; /* Color de texto más oscuro para contraste */
+  margin: 0;
+  padding: 0;
+}
+
+/* Contenedor principal */
+.catalog-container {
+  display: flex;
+  flex-direction: row;
+  margin: 40px;
+  gap: 30px;
+}
+
+/* Estilos del sidebar */
+.catalog-sidebar {
+  width: 260px;
+  padding: 25px;
+  background-color: #f4e041;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  margin-right: 30px;
+  position: sticky;
+  top: 20px;
+  animation: fadeIn 1.2s ease;
+  border: 2px solid #f4e041; /* Detalle amarillo vibrante */
+}
+
+/* Estructura mejorada del filtro de precios */
+.filter-section h4 {
+  font-size: 1.6em;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.filter-section input[type="number"] {
+  width: 100%; /* Asegura que el campo no sobresalga */
+  box-sizing: border-box; /* Evita que el padding afecte el ancho */
+  margin-bottom: 10px;
+}
+
+.filter-section input[type="number"] {
+  padding: 12px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  font-size: 1.1em;
+  transition: all 0.4s ease;
+}
+
+.filter-section input[type="number"]:focus {
+  border-color: #008000; /* Verde en focus */
+  background-color: #f9f9f9;
+}
+
+/* Añadir estilo al hover y focus */
+.filter-section input:hover {
+  border-color: #008000;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo de la lista de productos */
+.catalog-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+  flex-grow: 1;
+  justify-content: space-around;
+  animation: fadeInUp 1.4s ease;
+}
+
+/* Estilo de las tarjetas de producto */
+.product-card {
+  background-color: black;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  text-align: center;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  animation: fadeIn 1.2s ease;
+  overflow: hidden;
+  border: 2px solid #f4e041; /* Amarillo suave para bordes */
+}
+
+.product-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.product-card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  transition: transform 0.4s ease;
+  border: 2px solid #f4b400;
+}
+
+.product-card:hover img {
+  transform: scale(1.08);
+}
+
+/* Información del producto */
+.product-info h4 {
+  margin: 20px 0;
+  font-size: 1.6em;
+  color: #f4b400;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.marca {
+  color:white; /* Color verde vibrante */
+
+}
+.precio-producto {
+  color: #28a745; /* Color verde vibrante */
+  font-weight: bold; /* Negrita */
+  font-size: 1.2em; /* Ajusta el tamaño de la fuente según lo necesites */
+  margin: 15px 0; /* Espaciado alrededor del texto */
+}
+
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
+  .catalog-container {
+    flex-direction: column;
+  }
+
+  .catalog-sidebar {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  .catalog-products {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Estilo para el botón "Añadir al carrito" */
+.add-to-cart {
+  background-color: #f4b400;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 15px 22px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 20px;
+  box-shadow: 0 6px 15px rgba(244, 180, 0, 0.5);
+}
+
+.add-to-cart:hover {
+  background-color: #e6a500;
+  box-shadow: 0 8px 22px rgba(244, 180, 0, 0.7);
+}
+
+/* Animaciones */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
