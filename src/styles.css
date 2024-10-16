@@ -28,7 +28,7 @@ header {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1700px;
   margin: 0 auto;
 }
 
@@ -51,7 +51,7 @@ nav {
   flex-grow: 1;
   display: flex;
   justify-content: center;
-  gap: 60px;
+  gap: 120px;
 }
 
 /* Estilos de los enlaces */
@@ -155,3 +155,4 @@ nav a:active {
   text-align: center; /* Centrar el texto */
   margin: 5px 0; /* Espaciado entre párrafos */
 }
+

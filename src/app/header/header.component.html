@@ -14,12 +14,24 @@
       <a href="#">
         <img src="https://cdn-icons-png.flaticon.com/128/3550/3550640.png" alt="Carrito" class="cart-icon">
       </a>
-      <span *ngIf="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span> <!-- Muestra el número de productos -->
+      <span *ngIf="cartItemCount > 0" class="cart-count">{{ cartItemCount }}</span>
+
+      <!-- Modal -->
       <div class="modal" *ngIf="isModalVisible">
-        <img *ngIf="lastAddedProduct?.imagen" [src]="'data:image/jpeg;base64,' + lastAddedProduct.imagen" alt="{{ lastAddedProduct?.nombre }}" />
-        <p>{{ lastAddedProduct?.nombre }}</p>
-        <p>{{ lastAddedProduct?.precio }} €</p>
-        <button (click)="eliminarProducto()">Eliminar Producto</button> <!-- Botón para eliminar el producto -->
+        <!-- Si el carrito está vacío, mostrar el mensaje -->
+        <p *ngIf="cartItems.length === 0">Su carrito está vacío</p>
+
+        <!-- Mostrar los productos si hay productos en el carrito -->
+        <div *ngFor="let product of cartItems; let i = index">
+          <img *ngIf="product?.imagen" [src]="'data:image/jpeg;base64,' + product.imagen" alt="{{ product?.nombre }}" />
+          <p>{{ product?.nombre }}</p>
+          <p>{{ product?.precio }} €</p>
+          <button (click)="eliminarProducto(i)">Eliminar Producto</button> <!-- Botón para eliminar el producto -->
+        </div>
+
+        <!-- Botón para comprar si hay productos -->
+        <button *ngIf="cartItems.length > 0" class="buy-button primary-button" (click)="comprar()">Comprar</button>
+
       </div>
     </div>
   </div>

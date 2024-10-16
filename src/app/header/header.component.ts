@@ -1,43 +1,75 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../header/cart.service'; // Actualiza la ruta según la ubicación real del servicio
-import { CommonModule } from '@angular/common'; // Importa CommonModule
+import { CartService } from '../header/cart.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule], // Agrega CommonModule aquí
+  imports: [CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  cartItemCount: number = 0; // Variable para almacenar el número de productos
+  cartItemCount: number = 0; // Número de productos en el carrito
   isModalVisible: boolean = false; // Controla la visibilidad del modal
-  lastAddedProduct: any; // Almacena el último producto añadido
+  cartItems: any[] = []; // Lista de productos en el carrito
+  lastAddedProduct: any; // Último producto añadido
 
   constructor(private cartService: CartService) {}
 
   ngOnInit(): void {
-    // Suscribirse a los cambios en el carrito
+    // Recuperar el carrito almacenado en localStorage al cargar la página
+    const storedCart = localStorage.getItem('cart');
+    if (storedCart) {
+      this.cartItems = JSON.parse(storedCart);
+      this.cartItemCount = this.cartItems.length; // Actualizar el contador
+    }
+
+    // Suscribirse a los cambios en el carrito del servicio
     this.cartService.cart$.subscribe(cart => {
-      this.cartItemCount = cart.length; // Actualizar el contador
+      this.cartItems = cart; // Actualiza los productos en el carrito
+      this.cartItemCount = cart.length; // Actualizar el contador de productos
       this.lastAddedProduct = cart[cart.length - 1]; // Guardar el último producto añadido
-      console.log('Último producto añadido:', this.lastAddedProduct); // Verifica que el producto tenga la imagen
+
+      // Guardar el carrito en localStorage
+      localStorage.setItem('cart', JSON.stringify(this.cartItems));
+      console.log('Último producto añadido:', this.lastAddedProduct);
     });
   }
 
   showModal() {
     this.isModalVisible = true; // Mostrar el modal
-    // Asegúrate de que lastAddedProduct tenga la imagen en formato Base64
   }
 
   hideModal() {
     this.isModalVisible = false; // Ocultar el modal
   }
 
-  eliminarProducto() {
-    // Lógica para eliminar el último producto añadido
-    this.cartService.eliminarUltimoProducto(); // Asegúrate de que este método esté implementado en tu servicio
-    this.lastAddedProduct = null; // Limpiar el último producto mostrado
-    this.cartItemCount = Math.max(0, this.cartItemCount - 1); // Actualizar el contador
+  eliminarProducto(index: number) {
+    // Eliminar producto por su índice
+    this.cartItems.splice(index, 1); // Elimina el producto de la lista
+    this.cartItemCount = this.cartItems.length; // Actualizar el contador de productos
+
+    // Actualizar el carrito en localStorage
+    localStorage.setItem('cart', JSON.stringify(this.cartItems));
+
+    // Si el carrito está vacío, también se puede eliminar del localStorage
+    if (this.cartItemCount === 0) {
+      localStorage.removeItem('cart');
+    }
+  }
+
+  comprar() {
+    // Lógica para comprar los productos del carrito
+    if (this.cartItems.length > 0) {
+      // Realizar la compra (puede ser una llamada a un servicio o redirigir a otra página)
+      console.log('Comprando productos:', this.cartItems);
+
+      // Limpiar el carrito después de la compra
+      this.cartItems = [];
+      this.cartItemCount = 0;
+      localStorage.removeItem('cart'); // Eliminar el carrito del localStorage
+    }
   }
 }
+

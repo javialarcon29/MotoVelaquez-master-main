@@ -1,10 +1,11 @@
 /* Estilos globales */
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f7f7f7; /* Fondo blanco suave */
-  color: #333; /* Color de texto más oscuro para contraste */
+  background-color: #f7f7f7;
+  color: #333;
   margin: 0;
   padding: 0;
+  overflow: visible; /* Asegurarse de que el body no interfiera */
 }
 
 /* Contenedor principal */
@@ -13,6 +14,7 @@ body {
   flex-direction: row;
   margin: 40px;
   gap: 30px;
+  overflow: visible; /* Asegurarse de que el contenedor no limite el sticky */
 }
 
 /* Estilos del sidebar */
@@ -23,11 +25,18 @@ body {
   border-radius: 15px;
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   margin-right: 30px;
+  /* Sticky behavior */
   position: sticky;
   top: 20px;
+  border: 2px solid #f4e041;
   animation: fadeIn 1.2s ease;
-  border: 2px solid #f4e041; /* Detalle amarillo vibrante */
+  height: fit-content;
+  overflow: visible;
+  /* Ajuste para alargar el sidebar */
+  min-height: 700px; /* Altura mínima más grande */
+  padding-bottom: 40px; /* Añadir más espacio en la parte inferior */
 }
+
 
 /* Estructura mejorada del filtro de precios */
 .filter-section h4 {
@@ -37,8 +46,8 @@ body {
 }
 
 .filter-section input[type="number"] {
-  width: 100%; /* Asegura que el campo no sobresalga */
-  box-sizing: border-box; /* Evita que el padding afecte el ancho */
+  width: 100%;
+  box-sizing: border-box;
   margin-bottom: 10px;
 }
 
@@ -51,11 +60,10 @@ body {
 }
 
 .filter-section input[type="number"]:focus {
-  border-color: #008000; /* Verde en focus */
+  border-color: #008000;
   background-color: #f9f9f9;
 }
 
-/* Añadir estilo al hover y focus */
 .filter-section input:hover {
   border-color: #008000;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
@@ -82,7 +90,7 @@ body {
   position: relative;
   animation: fadeIn 1.2s ease;
   overflow: hidden;
-  border: 2px solid #f4e041; /* Amarillo suave para bordes */
+  border: 2px solid #f4e041;
 }
 
 .product-card:hover {
@@ -115,16 +123,15 @@ body {
 }
 
 .marca {
-  color:white; /* Color verde vibrante */
-
+  color: white;
 }
+
 .precio-producto {
-  color: #28a745; /* Color verde vibrante */
-  font-weight: bold; /* Negrita */
-  font-size: 1.2em; /* Ajusta el tamaño de la fuente según lo necesites */
-  margin: 15px 0; /* Espaciado alrededor del texto */
+  color: #28a745;
+  font-weight: bold;
+  font-size: 1.2em;
+  margin: 15px 0;
 }
-
 
 /* Ajustes para pantallas pequeñas */
 @media (max-width: 768px) {
@@ -162,7 +169,6 @@ body {
 }
 
 /* Animaciones */
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -182,14 +188,5 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.1);
   }
 }
