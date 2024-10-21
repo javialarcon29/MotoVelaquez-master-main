@@ -1,0 +1,168 @@
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor principal de contacto */
+.contact-container {
+  width: 80%;
+  max-width: 1000px;
+  background-color: #fff;
+  padding: 20px; /* Relleno reducido */
+  border-radius: 15px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  margin: auto;
+  margin-top: 30px;
+}
+
+/* Estilo del logotipo */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px; /* Relleno reducido */
+}
+
+.logo {
+  width: 180px;
+  height: auto;
+  display: block;
+}
+
+/* Títulos y párrafos */
+h2 {
+  font-size: 2.2em; /* Tamaño reducido */
+  color: #2c3e50;
+  margin-bottom: 10px; /* Relleno reducido */
+}
+
+h3 {
+  font-size: 1.6em; /* Tamaño reducido */
+  color: #2c3e50;
+  margin-top: 20px; /* Relleno reducido */
+}
+
+p {
+  font-size: 1em; /* Tamaño reducido */
+  line-height: 1.5; /* Interlineado ajustado */
+  margin: 5px 0; /* Relleno reducido */
+  color: #555;
+}
+
+/* Iconos de contacto */
+.contact-icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 20px 0; /* Relleno reducido */
+  flex-wrap: wrap;
+}
+
+.contact-item {
+  text-decoration: none;
+  color: #333;
+  font-size: 1em; /* Tamaño reducido */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px; /* Relleno reducido */
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  width: 120px; /* Ancho ajustado */
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+  background-color: #eaeaea;
+}
+
+.contact-item i {
+  font-size: 2.5em; /* Tamaño ajustado */
+  margin-bottom: 5px; /* Relleno reducido */
+  color: #3498db;
+}
+
+/* Imágenes personalizadas para los íconos */
+.contact-item img {
+  width: 50px; /* Tamaño ajustado */
+  height: 50px;
+  margin-bottom: 5px; /* Relleno reducido */
+}
+
+/* Detalles de contacto */
+.contact-details {
+  text-align: center;
+  margin-top: 20px; /* Relleno reducido */
+}
+
+.contact-details ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact-details li {
+  font-size: 1em; /* Tamaño reducido */
+  margin: 3px 0; /* Relleno reducido */
+  color: #444;
+}
+
+/* Política de devoluciones */
+.refund-policy {
+  text-align: center;
+  margin-top: 30px; /* Relleno ajustado */
+  background-color: #f7f7f7;
+  padding: 15px; /* Relleno reducido */
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.refund-policy ul {
+  list-style-type: disc;
+  text-align: left;
+  margin-left: 20px;
+}
+
+.refund-policy a {
+  color: #3498db;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.refund-policy a:hover {
+  text-decoration: underline;
+}
+
+/* Animación para los elementos al pasar el ratón */
+.contact-item:hover i,
+.contact-item:hover span {
+  color: #2980b9;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 768px) {
+  .contact-container {
+      width: 90%;
+      padding: 20px; /* Relleno ajustado */
+  }
+
+  .contact-icons {
+      flex-direction: column;
+  }
+
+  .contact-item {
+      width: 80%;
+      margin: 10px 0; /* Relleno reducido */
+  }
+}

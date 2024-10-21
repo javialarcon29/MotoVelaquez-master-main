@@ -37,7 +37,7 @@
       </select>
     </div>
 
-    <!-- Filtro de Rango de Precios -->
+ 
     <div class="filter-section">
       <h4>Rango de precios</h4>
       <label for="minPrice">Min:</label>
@@ -61,16 +61,15 @@
 
   <!-- Catálogo de Productos -->
   <div class="catalog-products">
-    <div *ngFor="let moto of filteredMotos" class="product-card">
+    <div *ngFor="let moto of filteredMotos" class="product-card" (click)="goToFichaTecnica(moto)">
       <img [src]="'data:image/jpeg;base64,' + moto.imagen" alt="{{ moto.nombre }}" />
       <div class="product-info">
         <h4>{{ moto.nombre }}</h4>
         <p class="marca">{{ moto.marca }}</p>
         <p class="precio-producto">{{ moto.precio }} €</p>
-
-        {{ add_to_cart_button }}
-        <button class="add-to-cart" (click)="addToCart(moto)">Añadir al carrito</button>
+        <button class="add-to-cart" (click)="addToCart(moto); $event.stopPropagation()">Añadir al carrito</button>
       </div>
     </div>
+    
   </div>
 </div>

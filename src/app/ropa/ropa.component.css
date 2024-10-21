@@ -5,86 +5,76 @@ body {
     color: #333;
     margin: 0;
     padding: 0;
-    overflow: visible; /* Asegurarse de que el body no interfiera */
-  }
-  
-  /* Contenedor principal */
-  .catalog-container {
+    overflow: visible;
+}
+
+/* Contenedor principal */
+.catalog-container {
     display: flex;
     flex-direction: row;
     margin: 40px;
     gap: 30px;
-    overflow: visible; /* Asegurarse de que el contenedor no limite el sticky */
-  }
-  .categoria {
-    color: white;   /* Cambia el color de la letra a blanco */
-    font-weight: bold;   /* Hace que el texto sea bold */
+    overflow: visible;
 }
 
-  /* Estilos del sidebar */
-  .catalog-sidebar {
+/* Estilos del sidebar */
+.catalog-sidebar {
     width: 260px;
     padding: 25px;
     background-color: #f4e041;
     border-radius: 15px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     margin-right: 30px;
-    /* Sticky behavior */
     position: sticky;
     top: 20px;
     border: 2px solid #f4e041;
     animation: fadeIn 1.2s ease;
     height: fit-content;
     overflow: visible;
-    /* Ajuste para alargar el sidebar */
-    min-height: 700px; /* Altura mínima más grande */
-    padding-bottom: 40px; /* Añadir más espacio en la parte inferior */
-  }
-  
-  
-  /* Estructura mejorada del filtro de precios */
-  .filter-section h4 {
+    min-height: 700px;
+    padding-bottom: 40px;
+}
+
+/* Estructura del filtro de precios */
+.filter-section h4 {
     font-size: 1.6em;
     color: #666;
     margin-bottom: 15px;
-  }
-  
-  .filter-section input[type="number"] {
+}
+
+.filter-section input[type="number"] {
     width: 100%;
     box-sizing: border-box;
     margin-bottom: 10px;
-  }
-  
-  .filter-section input[type="number"] {
     padding: 12px;
     border-radius: 10px;
     border: 2px solid #ccc;
     font-size: 1.1em;
     transition: all 0.4s ease;
-  }
-  
-  .filter-section input[type="number"]:focus {
+}
+
+.filter-section input[type="number"]:focus {
     border-color: #008000;
     background-color: #f9f9f9;
-  }
-  
-  .filter-section input:hover {
+}
+
+.filter-section input:hover {
     border-color: #008000;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Estilo de la lista de productos */
-  .catalog-products {
+}
+
+/* Estilo de la lista de productos */
+.catalog-products {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 30px;
     flex-grow: 1;
     justify-content: space-around;
     animation: fadeInUp 1.4s ease;
-  }
-  
-  /* Estilo de las tarjetas de producto */
-  .product-card {
+}
+
+/* Estilo de las tarjetas de producto */
+.product-card {
     background-color: black;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -95,14 +85,14 @@ body {
     animation: fadeIn 1.2s ease;
     overflow: hidden;
     border: 2px solid #f4e041;
-  }
-  
-  .product-card:hover {
+}
+
+.product-card:hover {
     transform: translateY(-12px);
     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  }
-  
-  .product-card img {
+}
+
+.product-card img {
     width: 100%;
     height: 240px;
     object-fit: cover;
@@ -110,51 +100,57 @@ body {
     margin-bottom: 20px;
     transition: transform 0.4s ease;
     border: 2px solid #f4b400;
-  }
-  
-  .product-card:hover img {
+}
+
+.product-card:hover img {
     transform: scale(1.08);
-  }
-  
-  /* Información del producto */
-  .product-info h4 {
+}
+
+/* Información del producto */
+.product-info h4 {
     margin: 20px 0;
     font-size: 1.6em;
     color: #f4b400;
     font-weight: 600;
     text-transform: uppercase;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
-  }
-  
-  .marca {
+}
+
+.categoria {
     color: white;
-  }
-  
-  .precio-producto {
+}
+
+.descripcion {
+    color: #ddd;
+    font-size: 0.9em;
+    margin: 10px 0;
+}
+
+.precio-producto {
     color: #28a745;
     font-weight: bold;
     font-size: 1.2em;
     margin: 15px 0;
-  }
-  
-  /* Ajustes para pantallas pequeñas */
-  @media (max-width: 768px) {
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 768px) {
     .catalog-container {
-      flex-direction: column;
+        flex-direction: column;
     }
-  
+
     .catalog-sidebar {
-      width: 100%;
-      margin-bottom: 30px;
+        width: 100%;
+        margin-bottom: 30px;
     }
-  
+
     .catalog-products {
-      grid-template-columns: 1fr;
+        grid-template-columns: 1fr;
     }
-  }
-  
-  /* Estilo para el botón "Añadir al carrito" */
-  .add-to-cart {
+}
+
+/* Estilo para el botón "Añadir al carrito" */
+.add-to-cart {
     background-color: #f4b400;
     color: white;
     border: none;
@@ -165,33 +161,32 @@ body {
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
     margin-top: 20px;
     box-shadow: 0 6px 15px rgba(244, 180, 0, 0.5);
-  }
-  
-  .add-to-cart:hover {
+}
+
+.add-to-cart:hover {
     background-color: #e6a500;
     box-shadow: 0 8px 22px rgba(244, 180, 0, 0.7);
-  }
-  
-  /* Animaciones */
-  @keyframes fadeIn {
+}
+
+/* Animaciones */
+@keyframes fadeIn {
     from {
-      opacity: 0;
-      transform: translateY(20px);
+        opacity: 0;
+        transform: translateY(20px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
-  @keyframes fadeInUp {
+}
+
+@keyframes fadeInUp {
     from {
-      opacity: 0;
-      transform: translateY(30px);
+        opacity: 0;
+        transform: translateY(30px);
     }
     to {
-      opacity: 1;
-      transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
     }
-  }
-  
+}

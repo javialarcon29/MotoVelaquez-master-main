@@ -6,42 +6,42 @@ import { HttpClientModule } from '@angular/common/http';
 import { CartService } from '../header/cart.service'; // Actualiza la ruta según la ubicación real del servicio
 
 @Component({
-  selector: 'app-accesorios',
+  selector: 'app-ropa',
   standalone: true,
-  templateUrl: './accesorios.component.html',
-  styleUrls: ['./accesorios.component.css'],
+  templateUrl: './ropa.component.html',
+  styleUrls: ['./ropa.component.css'],
   imports: [CommonModule, FormsModule, HttpClientModule],
   providers: [HttpClient]
 })
-export class AccesoriosComponent implements OnInit {
-  accesorios: any[] = [];
-  filteredAccesorios: any[] = [];
+export class RopaComponent implements OnInit {
+  ropa: any[] = [];
+  filteredRopa: any[] = [];
   searchTerm = '';
   selectedCategorias: string[] = [];
   sortOrder = 'asc';
   minPrice = 0;
   maxPrice = Infinity;
-  categorias = ['casco', 'guantes', 'pegatinas', 'escape', 'monos'];
-  
+  categorias = ['cascos', 'guantes', 'escape', 'monos', 'botas'];
+
   constructor(private http: HttpClient, private cartService: CartService) {}
 
   ngOnInit(): void {
-    this.http.get<any[]>('http://localhost:3000/api/accesorios').subscribe(
+    this.http.get<any[]>('http://localhost:3000/api/ropa').subscribe(
       data => {
-        this.accesorios = data;
-        this.filteredAccesorios = data;
+        this.ropa = data;
+        this.filteredRopa = data;
       },
       error => {
-        console.error('Error al obtener los accesorios:', error);
+        console.error('Error al obtener la ropa:', error);
       }
     );
   }
 
   applyFilters() {
-    this.filteredAccesorios = this.accesorios
-      .filter(accesorio => this.selectedCategorias.length === 0 || this.selectedCategorias.includes(accesorio.categoria))
-      .filter(accesorio => accesorio.precio >= this.minPrice && accesorio.precio <= (this.maxPrice === 0 ? Infinity : this.maxPrice))
-      .filter(accesorio => accesorio.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()))
+    this.filteredRopa = this.ropa
+      .filter(prenda => this.selectedCategorias.length === 0 || this.selectedCategorias.includes(prenda.categoria))
+      .filter(prenda => prenda.precio >= this.minPrice && prenda.precio <= (this.maxPrice === 0 ? Infinity : this.maxPrice))
+      .filter(prenda => prenda.nombre.toLowerCase().includes(this.searchTerm.toLowerCase()))
       .sort((a, b) => this.sortOrder === 'asc' ? a.precio - b.precio : b.precio - a.precio);
   }
 
@@ -54,8 +54,8 @@ export class AccesoriosComponent implements OnInit {
     this.applyFilters();
   }
 
-  addToCart(accesorio: any) {
-    this.cartService.addToCart(accesorio); // Añadir el accesorio al carrito usando el servicio
-    console.log('Añadido al carrito:', accesorio);
+  addToCart(prenda: any) {
+    this.cartService.addToCart(prenda); // Añadir la prenda de ropa al carrito usando el servicio
+    console.log('Añadido al carrito:', prenda);
   }
 }

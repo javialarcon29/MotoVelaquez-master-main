@@ -1,0 +1,38 @@
+<div class="ficha-tecnica" *ngIf="moto">
+    <h2>{{ moto.nombre }}</h2>
+    <p><strong>Marca:</strong> {{ moto.marca }}</p>
+    <p class="precio">{{ moto.precio }} €</p>
+    <p><strong>Descripción:</strong> {{ moto.descripcion }}</p>
+  
+    <!-- Imagen más compacta -->
+    <img *ngIf="moto.imagen" [src]="'data:image/jpeg;base64,' + moto.imagen" alt="{{ moto.nombre }}" class="moto-imagen">
+  
+    <!-- Sección de financiación -->
+    <div class="financiacion">
+      <h3>Financiación</h3>
+  
+      <label for="years">Selecciona el número de años (máximo 5):</label>
+      <select id="years" [(ngModel)]="years">
+        <option *ngFor="let year of [1, 2, 3, 4, 5]" [value]="year">{{ year }} años</option>
+      </select>
+  
+      <label for="entrada">Entrada inicial (€):</label>
+      <input id="entrada" type="number" [(ngModel)]="entrada" placeholder="0" min="0">
+  
+      <label for="ultimaCuota">Última cuota (€):</label>
+      <input id="ultimaCuota" type="number" [(ngModel)]="ultimaCuota" placeholder="0" min="0">
+  
+      <p><strong>Tasa de interés actual:</strong> {{ currentInterestRate }}%</p>
+      <button (click)="calcularFinanciacion()">Calcular financiación</button>
+  
+      <div *ngIf="cuotaMensual !== null">
+        <p><strong>Cuota mensual:</strong> {{ cuotaMensual | currency:'EUR' }} / mes</p>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div *ngIf="!moto" class="loading">
+    <p>Loading ficha técnica...</p>
+  </div>
+  
